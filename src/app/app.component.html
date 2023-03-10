@@ -5,12 +5,12 @@
         <form [formGroup]="newForm" class="card-form">
             
             <small *ngIf="minimumCharge > chargeUsd || minimumCharge > maximumCharge; else elseBlock" class="text-danger">
-                *Hi, Minimum price SHOULD NOT be more than the Charge or Maximum Charge!
+                *Minimum price SHOULD NOT be more than the Charge or Maximum Charge!
             </small>
             
             <ng-template #elseBlock>
             <small *ngIf="maximumCharge < chargeUsd || maximumCharge < minimumCharge" class="text-danger">
-                Hello, Maximum Charge SHOULD BE MORE than the Charge and Minimum Charge!!
+                *Maximum Charge SHOULD BE MORE than the Charge and Minimum Charge!!
             </small>
             </ng-template>
 
@@ -51,7 +51,7 @@
             </div>
 
             <div class="action">
-                <button class="action-button" (click)="submitNewForm()">Submit</button>
+                <button class="action-button" (click)="submitNewForm()" [disabled]="newForm.invalid">Submit</button>
             </div>
         </form>
         <!-- <div class="card-info">

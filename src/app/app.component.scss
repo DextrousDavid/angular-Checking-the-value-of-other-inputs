@@ -120,6 +120,7 @@ input {
 	}
 }
 
+
 .card-info {
 	padding: 1rem 1rem;
 	text-align: center;
@@ -135,3 +136,7 @@ input {
 .text-danger {
 	color: red;
 }
+
+button:disabled{
+	opacity: 0.3;
+  }

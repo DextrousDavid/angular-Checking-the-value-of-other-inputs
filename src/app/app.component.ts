@@ -19,14 +19,16 @@ export class AppComponent implements OnInit {
 
   newFormInterface() {
     this.newForm = new FormGroup({
-      chargeUsd: new FormControl('', [Validators.required, Validators.pattern('[0-9]*')]),
-      minimumCharge: new FormControl('', [Validators.required, Validators.pattern('[0-9]*')]),
-      maximumCharge: new FormControl('', [Validators.required, Validators.pattern('[0-9]*')]),
+      chargeUsd: new FormControl(null, [Validators.required, Validators.pattern('[0-9]*')]),
+      minimumCharge: new FormControl(null, [Validators.required, Validators.pattern('[0-9]*')]),
+      maximumCharge: new FormControl(null, [Validators.required, Validators.pattern('[0-9]*')]),
     })
   }
 
   submitNewForm() {
-    console.log('New form values>>', this.newForm.value.message);
+    if(this.newForm.valid) {
+      console.log('formValues>>', this.newForm.value)
+    }
   }
   
   // Check Minimum charge input
