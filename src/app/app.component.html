@@ -3,7 +3,7 @@
     <div class="card">
 
         <form [formGroup]="newForm" class="card-form">
-
+            
             <small *ngIf="minimumCharge > chargeUsd || minimumCharge > maximumCharge; else elseBlock" class="text-danger">
                 *Hi, Minimum price SHOULD NOT be more than the Charge or Maximum Charge!
             </small>
@@ -28,7 +28,7 @@
 
             <div class="input">
                 <input type="number" class="input-field" formControlName="minimumCharge"
-                    (ngModelChange)="checkMinimumCharge($event)" ngModel="numberValue"/>
+                    (ngModelChange)="checkMinimumCharge($event)"/>
                 <label class="input-label">Minimum Charge</label>
                 <span class="text-danger"
                     *ngIf="newForm.get('minimumCharge')?.invalid && (newForm.get('minimumCharge')?.touched || newForm.get('minimumCharge')?.dirty)">

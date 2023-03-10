@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
   title = 'thursday-exercise';
   newForm!: FormGroup;
   chargeUsd!: number;
-  message: string = '';
+  // message: string = '';
   minimumCharge!: number;
   maximumCharge!: number;
 
@@ -52,7 +52,7 @@ export class AppComponent implements OnInit {
       // this.toastr.warning('Hello, Maximum Charge SHOULD BE more than the CHARGE and MINIMUM CHARGE!!');
       console.log('Hello, Maximum Charge SHOULD BE more than the CHARGE and MINIMUM CHARGE!!');
     } else {
-      this.toastr.success('Nice One!');
+      // this.toastr.success('Nice One!');
       console.log('Maximum charge looks great!')
     }
   }
