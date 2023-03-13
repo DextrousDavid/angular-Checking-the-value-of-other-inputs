@@ -1,61 +1,94 @@
 <div class="container">
     <!-- code here -->
     <div class="card">
-
-        <form [formGroup]="newForm" class="card-form">
-            
-            <small *ngIf="minimumCharge > chargeUsd || minimumCharge > maximumCharge; else elseBlock" class="text-danger">
-                *Minimum price SHOULD NOT be more than the Charge or Maximum Charge!
+      <!-- modification begins -->
+      <form [formGroup]="newForm" class="card-form">
+        <small *ngIf="minimumCharge; else elseBlock" class="text-danger">
+          {{ message }}
+        </small>
+  
+        <ng-template #elseBlock>
+          <small class="text-danger">
+            {{ message }}
+          </small>
+        </ng-template>
+        <h1>Form</h1>
+        <div class="input">
+          <input
+            type="number"
+            class="input-field"
+            formControlName="chargeUsd"
+            (ngModelChange)="checkChargeUsd($event)"
+          />
+          <label class="input-label">Charge USD</label>
+          <span
+            class="text-danger"
+            *ngIf="
+              newForm.get('chargeUsd')?.invalid &&
+              (newForm.get('chargeUsd')?.touched ||
+                newForm.get('chargeUsd')?.dirty)
+            "
+          >
+            <small *ngIf="newForm.get('chargeUsd')?.errors?.['required']">
+              *This is a required field
             </small>
-            
-            <ng-template #elseBlock>
-            <small *ngIf="maximumCharge < chargeUsd || maximumCharge < minimumCharge" class="text-danger">
-                *Maximum Charge SHOULD BE MORE than the Charge and Minimum Charge!!
+          </span>
+        </div>
+  
+        <div class="input">
+          <input
+            type="number"
+            class="input-field"
+            formControlName="minimumCharge"
+            (ngModelChange)="checkMinimumCharge($event)"
+          />
+          <label class="input-label">Minimum Charge</label>
+          <span
+            class="text-danger"
+            *ngIf="
+              newForm.get('minimumCharge')?.invalid &&
+              (newForm.get('minimumCharge')?.touched ||
+                newForm.get('minimumCharge')?.dirty)
+            "
+          >
+            <small *ngIf="newForm.get('minimumCharge')?.errors?.['required']">
+              *This is a required field
             </small>
-            </ng-template>
-
-            <h1>Form</h1>
-            <div class="input">
-                <input type="number" class="input-field" formControlName="chargeUsd" [(ngModel)]="chargeUsd" />
-                <label class="input-label">Charge USD</label>
-                <span class="text-danger"
-                    *ngIf="newForm.get('chargeUsd')?.invalid && (newForm.get('chargeUsd')?.touched || newForm.get('chargeUsd')?.dirty)">
-                    <small *ngIf="newForm.get('chargeUsd')?.errors?.['required']">
-                        *This is a required field
-                    </small>
-                </span>
-            </div>
-
-            <div class="input">
-                <input type="number" class="input-field" formControlName="minimumCharge"
-                    (ngModelChange)="checkMinimumCharge($event)"/>
-                <label class="input-label">Minimum Charge</label>
-                <span class="text-danger"
-                    *ngIf="newForm.get('minimumCharge')?.invalid && (newForm.get('minimumCharge')?.touched || newForm.get('minimumCharge')?.dirty)">
-                    <small *ngIf="newForm.get('minimumCharge')?.errors?.['required']">
-                        *This is a required field
-                    </small>
-                </span>
-            </div>
-
-            <div class="input">
-                <input type="number" class="input-field" formControlName="maximumCharge"
-                    (ngModelChange)="checkMaximumCharge($event)" />
-                <label class="input-label">Maximum Charge</label>
-                <span class="text-danger"
-                    *ngIf="newForm.get('maximumCharge')?.invalid && (newForm.get('maximumCharge')?.touched || newForm.get('maximumCharge')?.dirty)">
-                    <small *ngIf="newForm.get('maximumCharge')?.errors?.['required']">
-                        *This is a required field
-                    </small>
-                </span>
-            </div>
-
-            <div class="action">
-                <button class="action-button" (click)="submitNewForm()" [disabled]="newForm.invalid">Submit</button>
-            </div>
-        </form>
-        <!-- <div class="card-info">
-			<p>By signing up you are agreeing to our <a href="#">Terms and Conditions</a></p>
-		</div> -->
+          </span>
+        </div>
+  
+        <div class="input">
+          <input
+            type="number"
+            class="input-field"
+            formControlName="maximumCharge"
+            (ngModelChange)="checkMaximumCharge($event)"
+          />
+          <label class="input-label">Maximum Charge</label>
+          <span
+            class="text-danger"
+            *ngIf="
+              newForm.get('maximumCharge')?.invalid &&
+              (newForm.get('maximumCharge')?.touched ||
+                newForm.get('maximumCharge')?.dirty)
+            "
+          >
+            <small *ngIf="newForm.get('maximumCharge')?.errors?.['required']">
+              *This is a required field
+            </small>
+          </span>
+        </div>
+  
+        <div class="action">
+          <button
+            class="action-button"
+            (click)="submitNewForm()"
+            [disabled]="newForm.invalid"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
     </div>
-</div>
+  </div>
+  
