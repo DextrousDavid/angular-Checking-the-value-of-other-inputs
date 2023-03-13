@@ -40,6 +40,7 @@ export class AppComponent implements OnInit {
     }
   }
 
+  // Check chargeUsd input
   checkChargeUsd(inputValue: number) {
     this.chargeUsd = inputValue;
     if (this.chargeUsd < this.minimumCharge) {
@@ -61,22 +62,16 @@ export class AppComponent implements OnInit {
     ) {
       this.message =
         '*Minimum price SHOULD be LESS than Charge and Maximum Charge!';
-      // this.toastr.warning('Hi, Minimum price SHOULD NOT be more than the CHARGE or MAXIMUM CHARGE!');
-      // console.log(
-      //   'Hi, Minimum price SHOULD NOT be more than the CHARGE or MAXIMUM CHARGE!'
-      // );
     } else if (this.minimumCharge >= this.maximumCharge) {
       this.message = '*Minimum price SHOULD be LESS than Maximum Charge!';
-      // console.log('Minimum charge looks great!');
     } else if (this.minimumCharge >= this.chargeUsd) {
       this.message = '*Minimum price SHOULD be LESS than Charge USD!';
-      // console.log('Minimum charge looks great!');
     } else {
       this.message = '';
     }
   }
 
-  // Check Maximum Charge
+  // Check Maximum Charge input
   checkMaximumCharge(inputValue: number) {
     this.maximumCharge = inputValue;
 
@@ -86,16 +81,10 @@ export class AppComponent implements OnInit {
     ) {
       this.message =
         '*Maximum price SHOULD BE more than Charge and Minimum Charge!';
-      // this.toastr.warning('Hi, Minimum price SHOULD NOT be more than the CHARGE or MAXIMUM CHARGE!');
-      // console.log(
-      //   'Hi, Minimum price SHOULD NOT be more than the CHARGE or MAXIMUM CHARGE!'
-      // );
     } else if (this.maximumCharge <= this.minimumCharge) {
       this.message = '*Maximum price SHOULD BE more than Minimum Charge!';
-      // console.log('Minimum charge looks great!');
     } else if (this.maximumCharge <= this.chargeUsd) {
       this.message = '*Maximum price SHOULD BE more than Charge USD!!';
-      // console.log('Minimum charge looks great!');
     } else {
       this.message = '';
     }
